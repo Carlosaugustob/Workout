@@ -1,0 +1,452 @@
+{
+  "version": "5",
+  "dialect": "mysql",
+  "id": "004c4c6e-4cd1-4c73-ba31-e2d12f312b23",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "tables": {
+    "exercise": {
+      "name": "exercise",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "exercise_id": {
+          "name": "exercise_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraint": {}
+    },
+    "instructorHasStudent": {
+      "name": "instructorHasStudent",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "structorId": {
+          "name": "structorId",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "studentId": {
+          "name": "studentId",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "instructorHasStudent_structorId_instructor_id_fk": {
+          "name": "instructorHasStudent_structorId_instructor_id_fk",
+          "tableFrom": "instructorHasStudent",
+          "tableTo": "instructor",
+          "columnsFrom": [
+            "structorId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "instructorHasStudent_studentId_student_id_fk": {
+          "name": "instructorHasStudent_studentId_student_id_fk",
+          "tableFrom": "instructorHasStudent",
+          "tableTo": "student",
+          "columnsFrom": [
+            "studentId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "instructorHasStudent_id": {
+          "name": "instructorHasStudent_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraint": {}
+    },
+    "instructor": {
+      "name": "instructor",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "age": {
+          "name": "age",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "phoneNumber": {
+          "name": "phoneNumber",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "password": {
+          "name": "password",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "serialCONFEF": {
+          "name": "serialCONFEF",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "instructor_id": {
+          "name": "instructor_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {
+        "instructor_email_unique": {
+          "name": "instructor_email_unique",
+          "columns": [
+            "email"
+          ]
+        },
+        "instructor_phoneNumber_unique": {
+          "name": "instructor_phoneNumber_unique",
+          "columns": [
+            "phoneNumber"
+          ]
+        },
+        "instructor_password_unique": {
+          "name": "instructor_password_unique",
+          "columns": [
+            "password"
+          ]
+        },
+        "instructor_serialCONFEF_unique": {
+          "name": "instructor_serialCONFEF_unique",
+          "columns": [
+            "serialCONFEF"
+          ]
+        }
+      },
+      "checkConstraint": {}
+    },
+    "student": {
+      "name": "student",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "age": {
+          "name": "age",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "phoneNumber": {
+          "name": "phoneNumber",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "weight": {
+          "name": "weight",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "dateOfBirth": {
+          "name": "dateOfBirth",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "height": {
+          "name": "height",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "startDate": {
+          "name": "startDate",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "password": {
+          "name": "password",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "student_id": {
+          "name": "student_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {
+        "student_phoneNumber_unique": {
+          "name": "student_phoneNumber_unique",
+          "columns": [
+            "phoneNumber"
+          ]
+        },
+        "student_email_unique": {
+          "name": "student_email_unique",
+          "columns": [
+            "email"
+          ]
+        },
+        "student_weight_unique": {
+          "name": "student_weight_unique",
+          "columns": [
+            "weight"
+          ]
+        },
+        "student_dateOfBirth_unique": {
+          "name": "student_dateOfBirth_unique",
+          "columns": [
+            "dateOfBirth"
+          ]
+        },
+        "student_height_unique": {
+          "name": "student_height_unique",
+          "columns": [
+            "height"
+          ]
+        },
+        "student_startDate_unique": {
+          "name": "student_startDate_unique",
+          "columns": [
+            "startDate"
+          ]
+        },
+        "student_password_unique": {
+          "name": "student_password_unique",
+          "columns": [
+            "password"
+          ]
+        }
+      },
+      "checkConstraint": {}
+    },
+    "workoutHasExercise": {
+      "name": "workoutHasExercise",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "workoutId": {
+          "name": "workoutId",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "exercisetId": {
+          "name": "exercisetId",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "series": {
+          "name": "series",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "reps": {
+          "name": "reps",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "exerciseWeight": {
+          "name": "exerciseWeight",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "workoutHasExercise_workoutId_workout_id_fk": {
+          "name": "workoutHasExercise_workoutId_workout_id_fk",
+          "tableFrom": "workoutHasExercise",
+          "tableTo": "workout",
+          "columnsFrom": [
+            "workoutId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "workoutHasExercise_exercisetId_exercise_id_fk": {
+          "name": "workoutHasExercise_exercisetId_exercise_id_fk",
+          "tableFrom": "workoutHasExercise",
+          "tableTo": "exercise",
+          "columnsFrom": [
+            "exercisetId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "workoutHasExercise_id": {
+          "name": "workoutHasExercise_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraint": {}
+    },
+    "workout": {
+      "name": "workout",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "workout_id": {
+          "name": "workout_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraint": {}
+    }
+  },
+  "views": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
+    "tables": {},
+    "indexes": {}
+  }
+}

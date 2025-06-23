@@ -1,6 +1,8 @@
 import { int, mysqlTable, serial, varchar } from 'drizzle-orm/mysql-core';
+
+
 export const instructorTable = mysqlTable('instructor', {
-    id: serial().primaryKey(),
+    id: int('unsigned').primaryKey(),
     name: varchar({ length: 255 }).notNull(),
     age: int().notNull(),
     email: varchar({ length: 255 }).notNull().unique(),
@@ -9,7 +11,7 @@ export const instructorTable = mysqlTable('instructor', {
     serialCONFEF: varchar({ length: 255 }).notNull().unique()
 });
 export const studentTable = mysqlTable('student', {
-    id: serial().primaryKey(),
+    id: int('unsigned').primaryKey(),
     name: varchar({ length: 255 }).notNull(),
     age: int().notNull(),
     phoneNumber: varchar({ length: 255 }).notNull().unique(),
@@ -21,17 +23,17 @@ export const studentTable = mysqlTable('student', {
     password: varchar({ length: 255 }).notNull().unique()
 });
 export const workoutTable = mysqlTable('workout', {
-    id: serial().primaryKey(),
+    id: int('unsigned').primaryKey(),
     name: varchar({ length: 255 }).notNull(),
 });
 export const ExerciseTable = mysqlTable('exercise', {
-    id: serial().primaryKey(),
+    id: int('unsigned').primaryKey(),
     name: varchar({ length: 255 }).notNull(),
 });
 export const workoutHasExerciseTable = mysqlTable('workoutHasExercise', {
     id: serial().primaryKey(),
-    workoutId: int().references(() => workoutTable.id, { onDelete: "cascade" }),
-    exercisetId: int().references(() => ExerciseTable.id, { onDelete: "cascade" }),
+    workoutId: int('unsigned').notNull().references(() => workoutTable.id, { onDelete: "cascade" }),
+    exercisetId: int('unsigned').notNull().references(() => ExerciseTable.id, { onDelete: "cascade" }),
     series: varchar({ length: 255 }).notNull(),
     reps: varchar({ length: 255 }).notNull(),
     exerciseWeight: varchar({ length: 255 }).notNull(),
@@ -39,7 +41,7 @@ export const workoutHasExerciseTable = mysqlTable('workoutHasExercise', {
 });
 export const InstructorHasStudentTable = mysqlTable('instructorHasStudent', {
     id: serial().primaryKey(),
-    structorId: int().references(() => instructorTable.id, { onDelete: "cascade" }),
-    studentId: int().references(() => studentTable.id, { onDelete: "cascade" }),
+    instructorId: int('unsigned').notNull().references(() => instructorTable.id, { onDelete: "cascade" }),
+    studentId: int('unsigned').notNull().references(() => studentTable.id, { onDelete: "cascade" }),
 
 });
