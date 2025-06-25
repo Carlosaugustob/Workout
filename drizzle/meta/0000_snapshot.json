@@ -1,18 +1,18 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "004c4c6e-4cd1-4c73-ba31-e2d12f312b23",
+  "id": "22bef32b-646b-49be-b06e-1a7d9d1cdd72",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "exercise": {
       "name": "exercise",
       "columns": {
-        "id": {
-          "name": "id",
-          "type": "serial",
+        "unsigned": {
+          "name": "unsigned",
+          "type": "int",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": true
+          "autoincrement": false
         },
         "name": {
           "name": "name",
@@ -25,10 +25,10 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {
-        "exercise_id": {
-          "name": "exercise_id",
+        "exercise_unsigned": {
+          "name": "exercise_unsigned",
           "columns": [
-            "id"
+            "unsigned"
           ]
         }
       },
@@ -45,45 +45,38 @@
           "notNull": true,
           "autoincrement": true
         },
-        "structorId": {
-          "name": "structorId",
+        "unsigned": {
+          "name": "unsigned",
           "type": "int",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "studentId": {
-          "name": "studentId",
-          "type": "int",
-          "primaryKey": false,
-          "notNull": false,
+          "notNull": true,
           "autoincrement": false
         }
       },
       "indexes": {},
       "foreignKeys": {
-        "instructorHasStudent_structorId_instructor_id_fk": {
-          "name": "instructorHasStudent_structorId_instructor_id_fk",
+        "instructorHasStudent_unsigned_instructor_unsigned_fk": {
+          "name": "instructorHasStudent_unsigned_instructor_unsigned_fk",
           "tableFrom": "instructorHasStudent",
           "tableTo": "instructor",
           "columnsFrom": [
-            "structorId"
+            "unsigned"
           ],
           "columnsTo": [
-            "id"
+            "unsigned"
           ],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
-        "instructorHasStudent_studentId_student_id_fk": {
-          "name": "instructorHasStudent_studentId_student_id_fk",
+        "instructorHasStudent_unsigned_student_unsigned_fk": {
+          "name": "instructorHasStudent_unsigned_student_unsigned_fk",
           "tableFrom": "instructorHasStudent",
           "tableTo": "student",
           "columnsFrom": [
-            "studentId"
+            "unsigned"
           ],
           "columnsTo": [
-            "id"
+            "unsigned"
           ],
           "onDelete": "cascade",
           "onUpdate": "no action"
@@ -103,12 +96,12 @@
     "instructor": {
       "name": "instructor",
       "columns": {
-        "id": {
-          "name": "id",
-          "type": "serial",
+        "unsigned": {
+          "name": "unsigned",
+          "type": "int",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": true
+          "autoincrement": false
         },
         "name": {
           "name": "name",
@@ -156,10 +149,10 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {
-        "instructor_id": {
-          "name": "instructor_id",
+        "instructor_unsigned": {
+          "name": "instructor_unsigned",
           "columns": [
-            "id"
+            "unsigned"
           ]
         }
       },
@@ -194,12 +187,12 @@
     "student": {
       "name": "student",
       "columns": {
-        "id": {
-          "name": "id",
-          "type": "serial",
+        "unsigned": {
+          "name": "unsigned",
+          "type": "int",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": true
+          "autoincrement": false
         },
         "name": {
           "name": "name",
@@ -268,10 +261,10 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {
-        "student_id": {
-          "name": "student_id",
+        "student_unsigned": {
+          "name": "student_unsigned",
           "columns": [
-            "id"
+            "unsigned"
           ]
         }
       },
@@ -331,18 +324,11 @@
           "notNull": true,
           "autoincrement": true
         },
-        "workoutId": {
-          "name": "workoutId",
+        "unsigned": {
+          "name": "unsigned",
           "type": "int",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "exercisetId": {
-          "name": "exercisetId",
-          "type": "int",
-          "primaryKey": false,
-          "notNull": false,
+          "notNull": true,
           "autoincrement": false
         },
         "series": {
@@ -369,28 +355,28 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "workoutHasExercise_workoutId_workout_id_fk": {
-          "name": "workoutHasExercise_workoutId_workout_id_fk",
+        "workoutHasExercise_unsigned_workout_unsigned_fk": {
+          "name": "workoutHasExercise_unsigned_workout_unsigned_fk",
           "tableFrom": "workoutHasExercise",
           "tableTo": "workout",
           "columnsFrom": [
-            "workoutId"
+            "unsigned"
           ],
           "columnsTo": [
-            "id"
+            "unsigned"
           ],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
-        "workoutHasExercise_exercisetId_exercise_id_fk": {
-          "name": "workoutHasExercise_exercisetId_exercise_id_fk",
+        "workoutHasExercise_unsigned_exercise_unsigned_fk": {
+          "name": "workoutHasExercise_unsigned_exercise_unsigned_fk",
           "tableFrom": "workoutHasExercise",
           "tableTo": "exercise",
           "columnsFrom": [
-            "exercisetId"
+            "unsigned"
           ],
           "columnsTo": [
-            "id"
+            "unsigned"
           ],
           "onDelete": "cascade",
           "onUpdate": "no action"
@@ -410,12 +396,12 @@
     "workout": {
       "name": "workout",
       "columns": {
-        "id": {
-          "name": "id",
-          "type": "serial",
+        "unsigned": {
+          "name": "unsigned",
+          "type": "int",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": true
+          "autoincrement": false
         },
         "name": {
           "name": "name",
@@ -428,10 +414,10 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {
-        "workout_id": {
-          "name": "workout_id",
+        "workout_unsigned": {
+          "name": "workout_unsigned",
           "columns": [
-            "id"
+            "unsigned"
           ]
         }
       },
